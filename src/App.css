@@ -88,12 +88,23 @@ main {
   box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2);
 }
 
-.search-and-more {
+/* .search-and-more {
   display: flex;
   flex: 2;
   margin: 5rem;
   align-items: center;
   justify-content: center;
+} */
+
+.search-and-more {
+  display: flex;
+  flex: 2 1;
+  margin: 5rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .searchInput {
