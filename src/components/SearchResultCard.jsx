@@ -31,14 +31,17 @@ export default function SearchResultCard(props) {
           color="textSecondary"
           gutterBottom
         >
-          {props.factState?"True":"False"}
+          {props.factState ? "True" : "False"}
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component="h2" gutterBottom>
           {props.factInput} ?
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant="body2" component="p" gutterBottom>
           {props.factAnswer}
           <br />
+        </Typography>
+        <Typography variant="h5" component="h2">
+          From: {props.factSource}
         </Typography>
       </CardContent>
     </Card>

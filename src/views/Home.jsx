@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import { Paper, Grid, Typography } from "@material-ui/core";
 import SearchInput from "../components/SearchInput";
 import SearchResultCard from "../components/SearchResultCard";
+import CircularIndeterminate from "../components/Circularindeterminate"
 
 const styles = (theme) => ({
   mainContainer: {
@@ -17,6 +18,9 @@ const styles = (theme) => ({
   },
   paperMarginBottom: {
     marginBottom: "1rem",
+  },
+  bufferingCircle: {
+    justifyContent:"center"
   },
 });
 const factState = true;
@@ -64,6 +68,13 @@ class Home extends Component {
                       <SearchInput />
                     </div>
                   </Grid>
+                  {this.props.fetchingAnswer && (
+                    <>
+                      <Grid item xs={12} className={classes.bufferingCircle}>
+                        <CircularIndeterminate />
+                      </Grid>
+                    </>
+                  )}
                   {this.props.answers.length > 0 && (
                     <>
                       <Grid item xs={12} className={classes.resultsMargin}>
@@ -82,6 +93,7 @@ class Home extends Component {
                         factState={factState}
                         factInput={this.props.claim}
                         factAnswer={JSON.parse(answer).content}
+                        factSource={JSON.parse(answer).name}
                       />
                     </Grid>
                   ))}
@@ -100,7 +112,8 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return {
     answers: state.factcheck.answers,
-    claim:state.factcheck.claim
+    claim: state.factcheck.claim,
+    fetchingAnswer: state.factcheck.fetchingAnswer,
   };
 };
 
