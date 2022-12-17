@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SearchInput() {
+function SearchInput(props) {
   const [values, setValues] = React.useState({
     fact: "",
   });
@@ -42,7 +42,7 @@ function SearchInput() {
 
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
-  const [helperText, setHelperText] = React.useState("Choose wisely");
+  const [helperText, setHelperText] = React.useState("Choose method");
 
   const handleRadioChange = (event) => {
     setValue(event.target.value);
@@ -52,24 +52,27 @@ function SearchInput() {
 
   const handleSubmit = (event) => {
     console.log(values.fact === "");
-    if(values.fact === ""){
+    event.preventDefault();
+    if (values.fact === "") {
       setHelperText("Please enter a fact");
       setError(true);
-    }
-    else if (value === "Elastic Search") {
-      event.preventDefault();
+    } else if (value === "Elastic Search") {
       console.log(values.fact);
       setHelperText("You got it!");
+      props.checkFact({
+        claim: values.fact,
+        "verification-strategy": "dpr",
+      });
       setError(false);
     } else if (value === "Web Scraper") {
       setHelperText("Sorry, wrong answer!");
+      props.checkFact({
+        claim: values.fact,
+        "verification-strategy": "scraping",
+      });
       setError(false);
     }
-    //All Methods
-    else if (value === "All Methods") {
-      setHelperText("Sorry, wrong answer!");
-      setError(false);
-    } else {
+    else {
       setHelperText("Please select an option.");
       setError(true);
     }
@@ -114,11 +117,6 @@ function SearchInput() {
               control={<Radio />}
               label="Web Scraper"
             />
-            <FormControlLabel
-              value="All Methods"
-              control={<Radio />}
-              label="All Methods"
-            />
           </RadioGroup>
           <FormHelperText>{helperText}</FormHelperText>
           <Button
@@ -136,11 +134,12 @@ function SearchInput() {
   );
 }
 const mapStateToProps = (state) => {
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    checkFact: () => dispatch(checkFact()),
+    checkFact: (factCheckReqBody) => dispatch(checkFact(factCheckReqBody)),
   };
 };
 
