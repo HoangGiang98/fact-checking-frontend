@@ -13,7 +13,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { checkFact } from "../store/actions/factcheckActions";
+import { checkFact,checkFactDocument } from "../store/actions/factcheckActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,10 +59,7 @@ function SearchInput(props) {
     } else if (value === "Elastic Search") {
       console.log(values.fact);
       setHelperText("You got it!");
-      props.checkFact({
-        claim: values.fact,
-        "verification-strategy": "dpr",
-      });
+      props.checkFactDocument(values.fact);
       setError(false);
     } else if (value === "Web Scraper") {
       setHelperText("Sorry, wrong answer!");
@@ -140,6 +137,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     checkFact: (factCheckReqBody) => dispatch(checkFact(factCheckReqBody)),
+    checkFactDocument: (fact) => dispatch(checkFactDocument(fact)),
   };
 };
 

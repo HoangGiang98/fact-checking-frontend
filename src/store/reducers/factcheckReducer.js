@@ -5,9 +5,10 @@ import {
 } from "../actions/factcheckActions";
 
 const initState = {
-  checkingResults: [],
-  fetchingRepos: false,
-  initialData: [],
+  answers: [],
+  fetchingAnswer: false,
+  claim:"",
+  error: [],
 };
 
 const factcheckReducer = (state = initState, action) => {
@@ -20,13 +21,14 @@ const factcheckReducer = (state = initState, action) => {
     case CHECK_FACT_SUCCESS:
       return {
         ...state,
-        repos: action.data,
-        initialData: action.data,
+        answers: action.data.answers,
+        claim: action.data.claim,
         fetchingAnswer: false,
       };
     case CHECK_FACT_FAILURE:
       return {
         ...state,
+        error:action.data,
         fetchingAnswer: false,
       };
     default:

@@ -2,16 +2,24 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Paper } from "@material-ui/core";
-import { checkFact } from "../store/actions/factcheckActions";
+import { Paper, Grid, Typography } from "@material-ui/core";
 import SearchInput from "../components/SearchInput";
+import SearchResultCard from "../components/SearchResultCard";
 
 const styles = (theme) => ({
   mainContainer: {
     backgroundColor: "#6540ff",
     flexGrow: 1,
   },
+  resultsMargin: {
+    marginRight: "5rem",
+    marginLeft: "5rem",
+  },
+  paperMarginBottom: {
+    marginBottom: "1rem",
+  },
 });
+const factState = true;
 class Home extends Component {
   state = {};
   render() {
@@ -42,17 +50,42 @@ class Home extends Component {
                         <h2>Past Claims</h2>
                       </a>
                     </div>
-                    <div className="link">
-                      <a href="#google-api">
-                        <img src="./images/binoculars.png" alt="" />
-                        <h2>Google API</h2>
-                      </a>
-                    </div>
                   </div>
                 </div>
-                <div className="search-and-more">
+                <Grid
+                  container
+                  direction="row"
+                  alignItems="stretch"
+                  spacing={1}
+                  className={classes.paperMarginBottom}
+                >
+                  <Grid item xs={12}>
+                    <div className="search-and-more">
                       <SearchInput />
-                </div>
+                    </div>
+                  </Grid>
+                  {this.props.answers.length > 0 && (
+                    <>
+                      <Grid item xs={12} className={classes.resultsMargin}>
+                        <Typography gutterBottom>Results</Typography>
+                      </Grid>
+                    </>
+                  )}
+                  {this.props.answers.map((answer) => (
+                    <Grid
+                      key={JSON.parse(answer).content}
+                      item
+                      xs={12}
+                      className={classes.resultsMargin}
+                    >
+                      <SearchResultCard
+                        factState={factState}
+                        factInput={this.props.claim}
+                        factAnswer={JSON.parse(answer).content}
+                      />
+                    </Grid>
+                  ))}
+                </Grid>
               </section>
             </main>
             <div className="circle1"></div>
@@ -65,13 +98,14 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    answers: state.factcheck.answers,
+    claim:state.factcheck.claim
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    checkFact: () => dispatch(checkFact()),
-  };
+  return {};
 };
 
 export default connect(

@@ -29,8 +29,38 @@ export const checkFact = (factCheckReqBody) => {
         });
       })
       .catch((error) => {
+        console.log(error);
         return dispatch({
           type: CHECK_FACT_FAILURE,
+        });
+      });
+  };
+};
+
+export const checkFactDocument = (fact) => {
+  return (dispatch) => {
+    dispatch({
+      type: WILL_CHECK_FACT,
+    });
+    axios
+      .get("http://localhost:8000/documents/" + fact, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        return dispatch({
+          type: CHECK_FACT_SUCCESS,
+          data: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        return dispatch({
+          type: CHECK_FACT_FAILURE,
+          data: error
         });
       });
   };
