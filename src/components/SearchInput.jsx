@@ -66,11 +66,11 @@ function SearchInput(props) {
       });
       setError(false);
     } else if (value === "Web Scraper") {
-      setHelperText("Sorry, wrong answer!");
-      props.checkFact({
-        claim: values.fact,
-        verification_method: "scraping",
-      });
+      setHelperText("Not implemented yet");
+      // props.checkFact({
+      //   claim: values.fact,
+      //   verification_method: "scraping",
+      // });
       setError(false);
     }
     else {

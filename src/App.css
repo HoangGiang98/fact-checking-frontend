@@ -46,6 +46,7 @@ main {
   padding: 1rem;
   font-size: 95%;
   font-weight: 500;
+  text-decoration: none;
 }
 
 .app-name img {
@@ -69,10 +70,6 @@ main {
   margin: 2rem 0rem;
   padding: 1rem 2rem;
   align-items: center;
-}
-
-.link a {
-  display: flex;
   text-decoration: none;
 }
 
@@ -86,6 +83,12 @@ main {
   background: linear-gradient(to left top, rgba(242, 222, 186, 0.8), rgba(255, 239, 214, 0.2));
   transform: translateX(-1rem);
   box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2);
+}
+
+.link.active {
+  background: linear-gradient(to left top, rgba(242, 222, 186, 0.8), rgba(255, 239, 214, 0.2));
+  transform: translateX(-1rem);
+  box-shadow: none;
 }
 
 /* .search-and-more {
