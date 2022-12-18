@@ -5,7 +5,8 @@ import { withRouter } from "react-router-dom";
 import { Paper, Grid, Typography } from "@material-ui/core";
 import SearchInput from "../components/SearchInput";
 import SearchResultCard from "../components/SearchResultCard";
-import CircularIndeterminate from "../components/Circularindeterminate"
+import CircularIndeterminate from "../components/Circularindeterminate";
+import Dashboard from "../components/Dashboard";
 
 const styles = (theme) => ({
   mainContainer: {
@@ -29,82 +30,53 @@ class Home extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.mainContainer}>
-        <Paper>
-          <div className="App">
-            <main>
-              <section className="glass">
-                <div className="dashboard">
-                  <div className="app-name">
-                    <img src="./images/fact-check.png" alt="" />
-                    <h1>Fact-Checking Tool</h1>
-                    <p>Verify claims to see how true they are</p>
-                  </div>
-                  <div className="links">
-                    <div className="link">
-                      <a href="#workings">
-                        <img src="./images/workings.png" alt="" />
-                        <h2>How It Works</h2>
-                      </a>
-                    </div>
-
-                    <div className="link">
-                      <a href="#past">
-                        <img src="./images/time.png" alt="" />
-                        <h2>Past Claims</h2>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <Grid
-                  container
-                  direction="row"
-                  alignItems="stretch"
-                  spacing={1}
-                  className={classes.paperMarginBottom}
-                >
-                  <Grid item xs={12}>
-                    <div className="search-and-more">
-                      <SearchInput />
-                    </div>
-                  </Grid>
-                  {this.props.fetchingAnswer && (
-                    <>
-                      <Grid item xs={12} className={classes.bufferingCircle}>
-                        <CircularIndeterminate />
-                      </Grid>
-                    </>
-                  )}
-                  {this.props.answers.length > 0 && (
-                    <>
-                      <Grid item xs={12} className={classes.resultsMargin}>
-                        <Typography gutterBottom>Results</Typography>
-                      </Grid>
-                    </>
-                  )}
-                  {this.props.answers.map((answer) => (
-                    <Grid
-                      key={JSON.parse(answer).content}
-                      item
-                      xs={12}
-                      className={classes.resultsMargin}
-                    >
-                      <SearchResultCard
-                        factState={factState}
-                        factInput={this.props.claim}
-                        factAnswer={JSON.parse(answer).content}
-                        factSource={JSON.parse(answer).name}
-                      />
-                    </Grid>
-                  ))}
+      <div className="search-and-more">
+      
+          <Grid
+            container
+            direction="row"
+            alignItems="stretch"
+            spacing={1}
+            className={classes.paperMarginBottom}
+          >
+            <Grid item xs={12}>
+              <div>
+                <SearchInput />
+              </div>
+              
+            </Grid>
+            {this.props.fetchingAnswer && (
+              <>
+                <Grid item xs={12} className={classes.bufferingCircle}>
+                  <CircularIndeterminate />
                 </Grid>
-              </section>
-            </main>
-            <div className="circle1"></div>
-            <div className="circle2"></div>
-          </div>
-        </Paper>
-      </div>
+              </>
+            )}
+            {this.props.answers.length > 0 && (
+              <>
+                <Grid item xs={12} className={classes.resultsMargin}>
+                  <Typography gutterBottom>Results</Typography>
+                </Grid>
+              </>
+            )}
+            {this.props.answers.map((answer) => (
+              <Grid
+                key={JSON.parse(answer).content}
+                item
+                xs={12}
+                className={classes.resultsMargin}
+              >
+                <SearchResultCard
+                  factState={factState}
+                  factInput={this.props.claim}
+                  factAnswer={JSON.parse(answer).content}
+                  factSource={JSON.parse(answer).name}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </div>
+      
     );
   }
 }
