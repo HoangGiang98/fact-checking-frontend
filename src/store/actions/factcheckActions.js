@@ -23,6 +23,7 @@ export const checkFact = (factCheckReqBody) => {
         }
       )
       .then((response) => {
+        console.log(response.data.answers[0].verdict);
         return dispatch({
           type: CHECK_FACT_SUCCESS,
           data: response.data,

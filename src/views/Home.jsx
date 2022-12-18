@@ -23,7 +23,6 @@ const styles = (theme) => ({
     justifyContent:"center"
   },
 });
-const factState = true;
 class Home extends Component {
   state = {};
   render() {
@@ -84,16 +83,16 @@ class Home extends Component {
                   )}
                   {this.props.answers.map((answer) => (
                     <Grid
-                      key={JSON.parse(answer).content}
+                      key={answer.title}
                       item
                       xs={12}
                       className={classes.resultsMargin}
                     >
                       <SearchResultCard
-                        factState={factState}
+                        factState={answer.verdict}
                         factInput={this.props.claim}
-                        factAnswer={JSON.parse(answer).content}
-                        factSource={JSON.parse(answer).name}
+                        factAnswer={answer.content}
+                        factSource={answer.title}
                       />
                     </Grid>
                   ))}

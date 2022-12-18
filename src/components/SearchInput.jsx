@@ -59,13 +59,17 @@ function SearchInput(props) {
     } else if (value === "Elastic Search") {
       console.log(values.fact);
       setHelperText("You got it!");
-      props.checkFactDocument(values.fact);
+      // props.checkFactDocument(values.fact);
+      props.checkFact({
+        claim: values.fact,
+        verification_method: "dpr",
+      });
       setError(false);
     } else if (value === "Web Scraper") {
       setHelperText("Sorry, wrong answer!");
       props.checkFact({
         claim: values.fact,
-        "verification-strategy": "scraping",
+        verification_method: "scraping",
       });
       setError(false);
     }
