@@ -3,6 +3,9 @@ import axios from "axios";
 export const WILL_CHECK_FACT = "WILL_CHECK_FACT";
 export const CHECK_FACT_SUCCESS = "CHECK_FACT_SUCCESS";
 export const CHECK_FACT_FAILURE = "CHECK_FACT_FAILURE";
+export const WILL_GET_HISTORY = "WILL_GET_HISTORY";
+export const GET_HISTORY_SUCCESS = "GET_HISTORY_SUCCESS";
+export const GET_HISTORY_FAILURE = "GET_HISTORY_FAILURE";
 
 
 export const checkFact = (factCheckReqBody) => {

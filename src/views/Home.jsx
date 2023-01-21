@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import SearchInput from "../components/SearchInput";
 import SearchResultCard from "../components/SearchResultCard";
 import CircularIndeterminate from "../components/Circularindeterminate";
@@ -38,7 +38,7 @@ class Home extends Component {
           className={classes.paperMarginBottom}
         >
           <Grid item xs={12}>
-              <SearchInput />
+            <SearchInput />
           </Grid>
           {this.props.fetchingAnswer && (
             <>
@@ -66,6 +66,8 @@ class Home extends Component {
                 factInput={this.props.claim}
                 factAnswer={answer.content}
                 factSource={answer.title}
+                factScore={answer.score}
+                factSummary={answer.summary}
               />
             </Grid>
           ))}

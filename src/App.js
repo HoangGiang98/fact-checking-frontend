@@ -8,7 +8,7 @@ import Home from './views/Home';
 import theme from './theme/index';
 import { Dashboard } from './components/Dashboard';
 import { HowItWorks } from './components/HowItWorks';
-import { History } from './components/History';
+import History from './views/History';
 const hist = createBrowserHistory();
 
 function App() {

@@ -56,7 +56,7 @@ function SearchInput(props) {
     if (values.fact === "") {
       setHelperText("Please enter a fact");
       setError(true);
-    } else if (value === "Elastic Search") {
+    } else if (value === "Database") {
       console.log(values.fact);
       setHelperText("You got it!");
       // props.checkFactDocument(values.fact);
@@ -65,15 +65,20 @@ function SearchInput(props) {
         verification_method: "dpr",
       });
       setError(false);
-    } else if (value === "Web Scraper") {
-      setHelperText("Not implemented yet");
-      // props.checkFact({
-      //   claim: values.fact,
-      //   verification_method: "scraping",
-      // });
+    } else if (value === "Google") {
+      
+      props.checkFact({
+        claim: values.fact,
+        verification_method: "google",
+      });
       setError(false);
-    }
-    else {
+    } else if (value === "Bing") {
+      props.checkFact({
+        claim: values.fact,
+        verification_method: "bing",
+      });
+      setError(false);
+    } else {
       setHelperText("Please select an option.");
       setError(true);
     }
@@ -109,14 +114,19 @@ function SearchInput(props) {
             onChange={handleRadioChange}
           >
             <FormControlLabel
-              value="Elastic Search"
+              value="Database"
               control={<Radio />}
-              label="Elastic Search"
+              label="Database"
             />
             <FormControlLabel
-              value="Web Scraper"
+              value="Google"
               control={<Radio />}
-              label="Web Scraper"
+              label="Google"
+            />
+            <FormControlLabel
+              value="Bing"
+              control={<Radio />}
+              label="Bing"
             />
           </RadioGroup>
           <FormHelperText>{helperText}</FormHelperText>

@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-
+import Link from "@material-ui/core/Link";
+import Gauge from "./Gauge";
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -19,6 +20,11 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  cardSize: {
+    maxHeight: "100px",
+    height:"100px",
+    overflowY: "auto",
+  },
 });
 
 export default function SearchResultCard(props) {
@@ -26,21 +32,39 @@ export default function SearchResultCard(props) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography
+        {/* <Typography
           className={classes.title}
           color="textSecondary"
           gutterBottom
         >
           {props.factState}
-        </Typography>
+        </Typography> */}
+        <Gauge score = {props.factScore} ></Gauge>
         <Typography variant="h5" component="h2" gutterBottom>
           {props.factInput} ?
         </Typography>
-        <Typography variant="body2" component="p" gutterBottom>
+        <Typography
+          variant="body2"
+          component="p"
+          gutterBottom
+          className={classes.cardSize}
+        >
           ...{props.factAnswer}...
         </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Summary
+        </Typography>
+        <Typography
+          variant="body2"
+          component="p"
+          gutterBottom
+        >
+         {props.factSummary}
+        </Typography>
         <Typography variant="h5" component="h2">
-          From: {props.factSource}
+          <Link href="#" underline="hover">
+            Source: {props.factSource}
+          </Link>
         </Typography>
       </CardContent>
     </Card>
