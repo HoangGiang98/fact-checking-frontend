@@ -18,11 +18,14 @@ main {
   background: white;
   background: linear-gradient(to top right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
   min-height: 80vh;
+  /* max-height: 80vh;
+  overflow-y: scroll; */
   width: 80%;
   border-radius: 1rem;
   backdrop-filter: blur(2rem);
   z-index: 2;
   display: flex;
+  align-items: flex-start;
 }
 
 .dashboard {
@@ -42,7 +45,7 @@ main {
   background: rgb(16, 161, 157);
   color: rgb(255, 255, 255);
   backdrop-filter: blur(1rem);
-  height: 80%;
+  /* height: 80%; */
   padding: 1rem;
   font-size: 95%;
   font-weight: 500;
@@ -109,6 +112,10 @@ main {
   flex-direction: column;
   align-content: flex-start;
   flex-wrap: wrap;
+}
+.div-part{
+  max-height: 60vh;
+  overflow-y: scroll;
 }
 
 .searchInput {

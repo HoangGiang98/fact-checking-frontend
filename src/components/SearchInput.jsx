@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     width: "28ch",
   },
+  unsetLeftMargin:{
+    marginLeft:"unset"
+  }
 }));
 
 function SearchInput(props) {
@@ -56,7 +59,7 @@ function SearchInput(props) {
     if (values.fact === "") {
       setHelperText("Please enter a fact");
       setError(true);
-    } else if (value === "Database") {
+    } else if (value === "dbr") {
       console.log(values.fact);
       setHelperText("You got it!");
       // props.checkFactDocument(values.fact);
@@ -65,8 +68,13 @@ function SearchInput(props) {
         verification_method: "dpr",
       });
       setError(false);
+    } else if (value === "Wikipedia Database") {
+      props.checkFact({
+        claim: values.fact,
+        verification_method: "Wikipedia Database",
+      });
+      setError(false);
     } else if (value === "Google") {
-      
       props.checkFact({
         claim: values.fact,
         verification_method: "google",
@@ -114,21 +122,41 @@ function SearchInput(props) {
             onChange={handleRadioChange}
           >
             <FormControlLabel
-              value="Database"
+              value="dbr"
               control={<Radio />}
-              label="Database"
+              label="Question based verification (Wikipedia Database)"
             />
             <FormControlLabel
-              value="Google"
+              value="Fact based verification"
               control={<Radio />}
-              label="Google"
+              label="Fact based verification"
             />
-            <FormControlLabel
-              value="Bing"
-              control={<Radio />}
-              label="Bing"
-            />
+            {value === "" || value === "dbr" ? (
+              ""
+            ) : (
+              <>
+                <FormControlLabel
+                  value="Wikipedia Database"
+                  control={<Radio />}
+                  label="Wikipedia Database"
+                  className={classes.unsetLeftMargin}
+                />
+                <FormControlLabel
+                  value="Bing"
+                  control={<Radio />}
+                  label="Bing"
+                  className={classes.unsetLeftMargin}
+                />
+                <FormControlLabel
+                  value="Google"
+                  control={<Radio />}
+                  label="Google"
+                  className={classes.unsetLeftMargin}
+                />
+              </>
+            )}
           </RadioGroup>
+
           <FormHelperText>{helperText}</FormHelperText>
           <Button
             type="submit"

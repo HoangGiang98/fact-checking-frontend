@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Gauge(props) {
+export default function TripleGauge(props) {
   const classes = useStyles();
   return (
     <Grid
@@ -22,9 +22,9 @@ export default function Gauge(props) {
         <GaugeChart
           id="gauge-chart3"
           nrOfLevels={20}
-          colors={["#FF0000", "#FF5F6D", "#00FF00"]}
+          colors={["#009944", "#f0541e", "#cf000f"]}
           arcWidth={0.2}
-          percent={props.score}
+          percent={props.supportedScore}
           textColor="#000"
         />
       </Grid>
@@ -32,9 +32,9 @@ export default function Gauge(props) {
         <GaugeChart
           id="gauge-chart3"
           nrOfLevels={20}
-          colors={["#FF0000", "#FF5F6D", "#00FF00"]}
+          colors={["#009944", "#f0541e", "#cf000f"]}
           arcWidth={0.2}
-          percent={props.score}
+          percent={props.refutedScore}
           textColor="#000"
         />
       </Grid>
@@ -42,9 +42,9 @@ export default function Gauge(props) {
         <GaugeChart
           id="gauge-chart3"
           nrOfLevels={20}
-          colors={["#FF0000", "#FF5F6D", "#00FF00"]}
+          colors={["#009944", "#f0541e", "#cf000f"]}
           arcWidth={0.2}
-          percent={props.score}
+          percent={props.neiScore}
           textColor="#000"
         />
       </Grid>

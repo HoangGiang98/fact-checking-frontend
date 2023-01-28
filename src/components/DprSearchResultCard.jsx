@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import TripleGauge from "./TripleGauge";
+import MatchGauge from "./MatchGauge";
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -22,21 +23,19 @@ const useStyles = makeStyles({
   },
   cardSize: {
     maxHeight: "100px",
-    height:"100px",
+    height: "100px",
     overflowY: "auto",
   },
 });
 
-export default function SearchResultCard(props) {
+export default function DprSearchResultCard(props) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardContent>
-        <TripleGauge
-          supportedScore={props.supportedScore}
-          refutedScore={props.refutedScore}
-          neiScore={props.neiScore}
-        ></TripleGauge>
+        <MatchGauge
+          score={props.score}
+        ></MatchGauge>
         <Typography
           variant="body2"
           component="p"

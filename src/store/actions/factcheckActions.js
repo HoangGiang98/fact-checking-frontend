@@ -56,7 +56,7 @@ export const checkFactDocument = (fact) => {
       .then((response) => {
         console.log(response.data);
         return dispatch({
-          type: CHECK_FACT_SUCCESS,
+          type: GET_HISTORY_SUCCESS,
           data: response.data,
         });
       })
@@ -65,6 +65,35 @@ export const checkFactDocument = (fact) => {
         return dispatch({
           type: CHECK_FACT_FAILURE,
           data: error
+        });
+      });
+  };
+};
+
+export const getHistory = (fact) => {
+  return (dispatch) => {
+    dispatch({
+      type: WILL_GET_HISTORY,
+    });
+    axios
+      .get("http://localhost:8000/factchecker/history/", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        return dispatch({
+          type: GET_HISTORY_SUCCESS,
+          data: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        return dispatch({
+          type: GET_HISTORY_FAILURE,
+          data: error,
         });
       });
   };
