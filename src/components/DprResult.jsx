@@ -29,7 +29,7 @@ export default function DprResult(props) {
       >
         <Grid item xs={12} className={classes.titleMargin}>
           <Typography variant="h4" gutterBottom>
-            {props.claim} ?
+            {props.claim}
           </Typography>
         </Grid>
       </Grid>

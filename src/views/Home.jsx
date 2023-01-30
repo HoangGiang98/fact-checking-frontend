@@ -76,7 +76,8 @@ const mapStateToProps = (state) => {
     answers: state.factcheck.answers,
     claim: state.factcheck.claim,
     fetchingAnswer: state.factcheck.fetchingAnswer,
-    verdict: state.factcheck.verdict
+    verdict: state.factcheck.verdict,
+    verificationMethod: state.factcheck.verificationMethod
   };
 };
 

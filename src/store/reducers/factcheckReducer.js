@@ -22,6 +22,7 @@ const factcheckReducer = (state = initState, action) => {
     case WILL_CHECK_FACT:
       return {
         ...state,
+        answers: [],
         fetchingAnswer: true,
       };
     case CHECK_FACT_SUCCESS:
