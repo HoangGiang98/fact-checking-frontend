@@ -13,7 +13,6 @@ export const checkFact = (factCheckReqBody) => {
     dispatch({
       type: WILL_CHECK_FACT,
     });
-    console.log(JSON.stringify(factCheckReqBody));
     axios
       .post(
         "http://localhost:8000/factchecker/verify/",
@@ -32,7 +31,6 @@ export const checkFact = (factCheckReqBody) => {
         });
       })
       .catch((error) => {
-        console.log(error);
         return dispatch({
           type: CHECK_FACT_FAILURE,
         });
@@ -53,14 +51,12 @@ export const checkFactDocument = (fact) => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         return dispatch({
           type: GET_HISTORY_SUCCESS,
           data: response.data,
         });
       })
       .catch((error) => {
-        console.log(error);
         return dispatch({
           type: CHECK_FACT_FAILURE,
           data: error
@@ -82,14 +78,12 @@ export const getHistory = (fact) => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         return dispatch({
           type: GET_HISTORY_SUCCESS,
           data: response.data,
         });
       })
       .catch((error) => {
-        console.log(error);
         return dispatch({
           type: GET_HISTORY_FAILURE,
           data: error,

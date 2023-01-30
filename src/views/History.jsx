@@ -51,7 +51,7 @@ class History extends Component {
                   First Claim
                 </Typography>
               </Grid>
-              {this.props.claimHistory[0].verification_method === "dpr" ? (
+              {this.props.claimHistory.length >= 1 && this.props.claimHistory[0].verification_method === "dpr" ? (
                 <DprResult
                   claim={this.props.claimHistory[0].claim}
                   answers={this.props.claimHistory[0].answers}
@@ -72,7 +72,7 @@ class History extends Component {
                   Second Claim
                 </Typography>
               </Grid>
-              {this.props.claimHistory[1].verification_method === "dpr" ? (
+              {this.props.claimHistory.length >= 2 && this.props.claimHistory[1].verification_method === "dpr" ? (
                 <DprResult
                   claim={this.props.claimHistory[1].claim}
                   answers={this.props.claimHistory[1].answers}
@@ -94,7 +94,7 @@ class History extends Component {
                   Third Claim
                 </Typography>
               </Grid>
-              {this.props.claimHistory[2].verification_method === "dpr" ? (
+              {this.props.claimHistory.length >= 3 && this.props.claimHistory[2].verification_method === "dpr" ? (
                 <DprResult
                   claim={this.props.claimHistory[2].claim}
                   answers={this.props.claimHistory[2].answers}
@@ -115,7 +115,7 @@ class History extends Component {
                   Fourth Claim
                 </Typography>
               </Grid>
-              {this.props.claimHistory[3].verification_method === "dpr" ? (
+              {this.props.claimHistory.length >= 4 && this.props.claimHistory[3].verification_method === "dpr" ? (
                 <DprResult
                   claim={this.props.claimHistory[3].claim}
                   answers={this.props.claimHistory[3].answers}
@@ -137,7 +137,7 @@ class History extends Component {
                   Fifth Claim
                 </Typography>
               </Grid>
-              {this.props.claimHistory[4].verification_method === "dpr" ? (
+              {this.props.claimHistory.length >= 5 && this.props.claimHistory[4].verification_method === "dpr" ? (
                 <DprResult
                   claim={this.props.claimHistory[4].claim}
                   answers={this.props.claimHistory[4].answers}

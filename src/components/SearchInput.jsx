@@ -54,13 +54,11 @@ function SearchInput(props) {
   };
 
   const handleSubmit = (event) => {
-    console.log(values.fact === "");
     event.preventDefault();
     if (values.fact === "") {
       setHelperText("Please enter a fact");
       setError(true);
     } else if (value === "dbr") {
-      console.log(values.fact);
       setHelperText("You got it!");
       // props.checkFactDocument(values.fact);
       props.checkFact({
