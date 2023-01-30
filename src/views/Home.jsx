@@ -4,10 +4,9 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Grid, Typography } from "@material-ui/core";
 import SearchInput from "../components/SearchInput";
-import SearchResultCard from "../components/SearchResultCard";
 import CircularIndeterminate from "../components/Circularindeterminate";
-import Dashboard from "../components/Dashboard";
-
+import DprResult from "../components/DprResult";
+import WebscrapeResult from "../components/WebscrapeResult";
 const styles = (theme) => ({
   mainContainer: {
     backgroundColor: "#6540ff",
@@ -61,14 +60,18 @@ class Home extends Component {
               xs={12}
               className={classes.resultsMargin}
             >
-              <SearchResultCard
-                factState={answer.verdict}
-                factInput={this.props.claim}
-                factAnswer={answer.content}
-                factSource={answer.title}
-                factScore={answer.score}
-                factSummary={answer.summary}
-              />
+              {answer.verification_method === "dpr" ? (
+                <DprResult
+                  claim={answer.claim}
+                  answers={answer.answers}
+                />
+              ) : (
+                <WebscrapeResult
+                  claim={answer.claim}
+                  verdict={answer.verdict}
+                  answers={answer.answers}
+                />
+              )}
             </Grid>
           ))}
         </Grid>

@@ -4,7 +4,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
-import TripleGauge from "./TripleGauge";
 import MatchGauge from "./MatchGauge";
 const useStyles = makeStyles({
   root: {
@@ -33,9 +32,7 @@ export default function DprSearchResultCard(props) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <MatchGauge
-          score={props.score}
-        ></MatchGauge>
+        <MatchGauge score={props.score}></MatchGauge>
         <Typography
           variant="body2"
           component="p"
@@ -44,14 +41,14 @@ export default function DprSearchResultCard(props) {
         >
           ...{props.factAnswer}...
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          Summary
-        </Typography>
-        <Typography variant="body2" component="p" gutterBottom>
-          {props.factSummary}
-        </Typography>
         <Typography variant="h5" component="h2">
-          <Link href="#" underline="hover">
+          <Link
+            component="button"
+            onClick={() => {
+               window.location.replace("https://"+props.factUrl);
+            }}
+            underline="hover"
+          >
             Source: {props.factSource}
           </Link>
         </Typography>

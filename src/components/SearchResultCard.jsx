@@ -45,14 +45,8 @@ export default function SearchResultCard(props) {
         >
           ...{props.factAnswer}...
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
-          Summary
-        </Typography>
-        <Typography variant="body2" component="p" gutterBottom>
-          {props.factSummary}
-        </Typography>
         <Typography variant="h5" component="h2">
-          <Link href="#" underline="hover">
+          <Link href={props.factUrl + ""} underline="hover">
             Source: {props.factSource}
           </Link>
         </Typography>
