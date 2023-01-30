@@ -14,6 +14,7 @@ const initState = {
   verificationMethod:"",
   history:[],
   error: [],
+  verdict: ""
 };
 
 const factcheckReducer = (state = initState, action) => {
@@ -24,10 +25,13 @@ const factcheckReducer = (state = initState, action) => {
         fetchingAnswer: true,
       };
     case CHECK_FACT_SUCCESS:
+      console.log('Now: ' + action.data.verdict);
       return {
         ...state,
         answers: action.data.answers,
         claim: action.data.claim,
+        verificationMethod: action.data.verification_method,
+        verdict: action.data.verdict,
         fetchingAnswer: false,
       };
     case CHECK_FACT_FAILURE:

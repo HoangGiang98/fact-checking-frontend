@@ -71,19 +71,19 @@ function SearchInput(props) {
     } else if (value === "Wikipedia Database") {
       props.checkFact({
         claim: values.fact,
-        verification_method: "Wikipedia Database",
+        verification_method: "nli_wiki",
       });
       setError(false);
     } else if (value === "Google") {
       props.checkFact({
         claim: values.fact,
-        verification_method: "google",
+        verification_method: "nli_google",
       });
       setError(false);
     } else if (value === "Bing") {
       props.checkFact({
         claim: values.fact,
-        verification_method: "bing",
+        verification_method: "nli_bing",
       });
       setError(false);
     } else {

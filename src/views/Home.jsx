@@ -51,29 +51,20 @@ class Home extends Component {
               <Grid item xs={12} className={classes.resultsMargin}>
                 <Typography gutterBottom>Results</Typography>
               </Grid>
-            </>
-          )}
-          {this.props.answers.map((answer) => (
-            <Grid
-              key={answer.title}
-              item
-              xs={12}
-              className={classes.resultsMargin}
-            >
-              {answer.verification_method === "dpr" ? (
+              {this.props.verificationMethod === "dpr" ? (
                 <DprResult
-                  claim={answer.claim}
-                  answers={answer.answers}
+                  claim={this.props.claim}
+                  answers={this.props.answers}
                 />
               ) : (
                 <WebscrapeResult
-                  claim={answer.claim}
-                  verdict={answer.verdict}
-                  answers={answer.answers}
+                  claim={this.props.claim}
+                  verdict={this.props.verdict}
+                  answers={this.props.answers}
                 />
               )}
-            </Grid>
-          ))}
+            </>
+          )}
         </Grid>
       </div>
     );
@@ -85,6 +76,7 @@ const mapStateToProps = (state) => {
     answers: state.factcheck.answers,
     claim: state.factcheck.claim,
     fetchingAnswer: state.factcheck.fetchingAnswer,
+    verdict: state.factcheck.verdict
   };
 };
 
