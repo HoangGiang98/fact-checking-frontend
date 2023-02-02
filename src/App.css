@@ -116,6 +116,7 @@ main {
 .div-part{
   max-height: 60vh;
   overflow-y: scroll;
+  overflow: -moz-scrollbars-vertical;
 }
 
 .searchInput {

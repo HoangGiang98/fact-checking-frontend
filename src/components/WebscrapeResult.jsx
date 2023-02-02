@@ -106,8 +106,8 @@ export default function WebscrapeResult(props) {
           </Grid>
         </Grid>
       </Grid>
-      {props.answers.map((answer) => (
-        <Grid key={answer.title} item xs={12} className={classes.cardSize}>
+      {props.answers.map((answer, i) => (
+        <Grid key={i} item xs={12} className={classes.cardSize}>
           <SearchResultCard
             factInput={props.claim}
             factAnswer={answer.content}

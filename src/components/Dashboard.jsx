@@ -9,10 +9,6 @@ export const Dashboard = () => {
                     <p>Verify claims to see how true they are</p>
                   </NavLink>
                   <div className="links">
-                    <NavLink className="link" to="/workings">
-                        <img src="./images/workings.png" alt="" />
-                        <h2>How It Works</h2>
-                    </NavLink>
 
                       <NavLink className="link" to="/history">
                         <img src="./images/time.png" alt="" />

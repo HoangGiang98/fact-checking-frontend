@@ -22,7 +22,7 @@ export default function TripleGauge(props) {
         <GaugeChart
           id="gauge-chart3"
           nrOfLevels={20}
-          colors={["#009944", "#f0541e", "#cf000f"]}
+          colors={["#cf000f", "#f0541e", "#009944"]}
           arcWidth={0.2}
           percent={props.supportedScore}
           textColor="#000"
@@ -32,7 +32,7 @@ export default function TripleGauge(props) {
         <GaugeChart
           id="gauge-chart3"
           nrOfLevels={20}
-          colors={["#009944", "#f0541e", "#cf000f"]}
+          colors={["#cf000f", "#f0541e", "#009944"]}
           arcWidth={0.2}
           percent={props.refutedScore}
           textColor="#000"
@@ -42,7 +42,7 @@ export default function TripleGauge(props) {
         <GaugeChart
           id="gauge-chart3"
           nrOfLevels={20}
-          colors={["#009944", "#f0541e", "#cf000f"]}
+          colors={["#cf000f", "#f0541e", "#009944"]}
           arcWidth={0.2}
           percent={props.neiScore}
           textColor="#000"
