@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, Divider } from "@material-ui/core";
 import { getHistory } from "../store/actions/factcheckActions";
 import DprResult from "../components/DprResult";
 import WebscrapeResult from "../components/WebscrapeResult";
@@ -21,6 +21,10 @@ const styles = (theme) => ({
   adjustingSubheadingMargin: {
     marginTop: "2rem",
   },
+  dividerMargin: {
+    marginTop: "2rem",
+    marginBottom: "2rem",
+  },
 });
 class History extends Component {
   componentDidMount() {
@@ -28,7 +32,6 @@ class History extends Component {
   }
 
   handleNumber(i) {
-    console.log(i);
     switch (i) {
       case 0:
         return "First Claim";
@@ -40,6 +43,21 @@ class History extends Component {
         return "Fourth Claim";
       case 4:
         return "Fifth Claim";
+      default:
+        return "";
+    }
+  }
+
+  handleVerificationMethod(verificationMethod) {
+    switch (verificationMethod) {
+      case "dpr":
+        return "Question based verification (Wikipedia Database)";
+      case "nli_bing":
+        return "Bing";
+      case "nli_google":
+        return "Google";
+      case "nli_wiki":
+        return "Fact based verification (Wikipedia Database)";
       default:
         return "";
     }
@@ -63,30 +81,41 @@ class History extends Component {
           </Grid>
           <div className="div-part">
             {this.props.claimHistory.map((el, i) => {
-              
-            return el.verification_method === "dpr" ? (
-              <div key={i}>
-                <Grid item xs={12} className={classes.resultsMargin}>
-                  <Typography variant="h4" gutterBottom>
-                    {this.handleNumber(i)}
-                  </Typography>
-                </Grid>
-                <DprResult key={i+"l"} claim={el.claim} answers={el.answers} />
-              </div>
-            ) : (
-              <div key={i}>
-                <Grid item  xs={12} className={classes.resultsMargin}>
-                  <Typography variant="h4" gutterBottom>
-                    {this.handleNumber(i)}
-                  </Typography>
-                </Grid>
-                <WebscrapeResult
-                  claim={el.claim}
-                  verdict={el.verdict}
-                  answers={el.answers}
-                />
-              </div>
-            );
+              return el.verification_method === "dpr" ? (
+                <div key={i}>
+                  <Grid item xs={12} className={classes.resultsMargin}>
+                    <Typography variant="h4" gutterBottom>
+                      {this.handleNumber(i) +
+                        " (" +
+                        this.handleVerificationMethod(el.verification_method) +
+                        ")"}
+                    </Typography>
+                  </Grid>
+                  <DprResult claim={el.claim} answers={el.answers} />
+                  <Divider
+                    className={classes.dividerMargin}
+                  />
+                </div>
+              ) : (
+                <div key={i}>
+                  <Grid item xs={12} className={classes.resultsMargin}>
+                    <Typography variant="h4" gutterBottom>
+                      {this.handleNumber(i) +
+                        " (" +
+                        this.handleVerificationMethod(el.verification_method) +
+                        ")"}
+                    </Typography>
+                  </Grid>
+                  <WebscrapeResult
+                    claim={el.claim}
+                    verdict={el.verdict}
+                    answers={el.answers}
+                  />
+                  <Divider
+                    className={classes.dividerMargin}
+                  />
+                </div>
+              );
             })}
           </div>
         </Grid>
