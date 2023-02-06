@@ -81,14 +81,14 @@ class History extends Component {
           </Grid>
           <div className="div-part">
             {this.props.claimHistory.map((el, i) => {
-              return el.verification_method === "dpr" ? (
+              return el.answers.length>0 ? (el.verification_method === "dpr" ? (
                 <div key={i}>
                   <Grid item xs={12} className={classes.resultsMargin}>
                     <Typography variant="h4" gutterBottom>
                       {this.handleNumber(i) +
-                        " (" +
-                        this.handleVerificationMethod(el.verification_method) +
-                        ")"}
+                        " - " +
+                        this.handleVerificationMethod(el.verification_method)
+                        }
                     </Typography>
                   </Grid>
                   <DprResult claim={el.claim} answers={el.answers} />
@@ -101,9 +101,9 @@ class History extends Component {
                   <Grid item xs={12} className={classes.resultsMargin}>
                     <Typography variant="h4" gutterBottom>
                       {this.handleNumber(i) +
-                        " (" +
-                        this.handleVerificationMethod(el.verification_method) +
-                        ")"}
+                        " - " +
+                        this.handleVerificationMethod(el.verification_method) 
+                        }
                     </Typography>
                   </Grid>
                   <WebscrapeResult
@@ -115,7 +115,8 @@ class History extends Component {
                     className={classes.dividerMargin}
                   />
                 </div>
-              );
+              )
+              ):""
             })}
           </div>
         </Grid>

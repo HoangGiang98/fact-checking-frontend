@@ -42,15 +42,7 @@ export default function DprSearchResultCard(props) {
           ...{props.factAnswer}...
         </Typography>
         <Typography variant="h5" component="h2">
-          <Link
-            component="button"
-            onClick={() => {
-               window.location.replace("https://"+props.factUrl);
-            }}
-            underline="hover"
-          >
-            Source: {props.factSource}
-          </Link>
+          <Link href={props.factUrl + ""}>Source: {props.factSource}</Link>
         </Typography>
       </CardContent>
     </Card>
