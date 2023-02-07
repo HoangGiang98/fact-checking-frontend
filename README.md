@@ -1,6 +1,7 @@
 # Fact Checking Frontend
 
-This is the repository that provides UI for the [Fact Checking Backend](https://gitlab.lrz.de/fact-checking-tool/fact-checking-backend) of the Fact Checking Tool. The Fact Checking Tool is an app that supports document search, evidence retrieval, and realtime claim verification. It employs natural language processing to create a standard pipeline for automated fact checking.
+This is the repository that provides UI for the [Fact Checking Backend](https://github.com/HoangGiang98/fact-checking-backend) of the Fact Checking Tool. The Fact Checking Tool is an app that supports document search, evidence retrieval, and realtime claim verification. It employs natural language processing to create a standard pipeline for automated fact checking.
+The Fact Checking Tool is a part of the project I participated at the Technical University of Munich.
 
 ## Features
 
@@ -22,7 +23,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repository
 
 ```
-git clone https://gitlab.lrz.de/fact-checking-tool/fact-checking-frontend-2.git
+git clone https://github.com/HoangGiang98/fact-checking-frontend.git
 ```
 
 2. Install the dependencies
