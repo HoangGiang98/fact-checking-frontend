@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   orangeColor: {
     color: "#f0541e",
+    fontSize:"large"
   }
 }));
 

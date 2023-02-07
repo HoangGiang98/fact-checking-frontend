@@ -18,8 +18,8 @@ main {
   background: white;
   background: linear-gradient(to top right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
   min-height: 80vh;
-  /* max-height: 80vh;
-  overflow-y: scroll; */
+  /* max-height: 80vh;*/
+  overflow-y: scroll; 
   width: 80%;
   border-radius: 1rem;
   backdrop-filter: blur(2rem);
@@ -117,6 +117,7 @@ main {
   max-height: 60vh;
   overflow-y: scroll;
   overflow: -moz-scrollbars-vertical;
+  overflow-x: hidden
 }
 
 .searchInput {

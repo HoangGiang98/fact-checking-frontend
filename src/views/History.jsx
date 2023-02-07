@@ -81,20 +81,17 @@ class History extends Component {
           </Grid>
           <div className="div-part">
             {this.props.claimHistory.map((el, i) => {
-              return el.answers.length>0 ? (el.verification_method === "dpr" ? (
+              return el.verification_method === "dpr" ? (
                 <div key={i}>
                   <Grid item xs={12} className={classes.resultsMargin}>
                     <Typography variant="h4" gutterBottom>
                       {this.handleNumber(i) +
                         " - " +
-                        this.handleVerificationMethod(el.verification_method)
-                        }
+                        this.handleVerificationMethod(el.verification_method)}
                     </Typography>
                   </Grid>
                   <DprResult claim={el.claim} answers={el.answers} />
-                  <Divider
-                    className={classes.dividerMargin}
-                  />
+                  <Divider className={classes.dividerMargin} />
                 </div>
               ) : (
                 <div key={i}>
@@ -102,8 +99,7 @@ class History extends Component {
                     <Typography variant="h4" gutterBottom>
                       {this.handleNumber(i) +
                         " - " +
-                        this.handleVerificationMethod(el.verification_method) 
-                        }
+                        this.handleVerificationMethod(el.verification_method)}
                     </Typography>
                   </Grid>
                   <WebscrapeResult
@@ -111,12 +107,9 @@ class History extends Component {
                     verdict={el.verdict}
                     answers={el.answers}
                   />
-                  <Divider
-                    className={classes.dividerMargin}
-                  />
+                  <Divider className={classes.dividerMargin} />
                 </div>
-              )
-              ):""
+              );
             })}
           </div>
         </Grid>
@@ -127,7 +120,9 @@ class History extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    claimHistory: state.factcheck.history,
+    claimHistory: state.factcheck.history.filter(
+      (item) => item.answers.length > 0
+    ),
   };
 };
 

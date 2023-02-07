@@ -42,6 +42,9 @@ class Home extends Component {
           {this.props.fetchingAnswer && (
             <>
               <Grid item xs={12} className={classes.bufferingCircle}>
+                <Typography align="center" gutterBottom>Generating Results</Typography>
+              </Grid>
+              <Grid item xs={12} className={classes.bufferingCircle}>
                 <CircularIndeterminate />
               </Grid>
             </>
